@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Konva.js Object Grid Snapping Demo</title>
+    </head>
+    <script src="code.js"></script>
+    <script src="konva.min.js"></script>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .toolBarItem{
+            width: 75px;
+            height: auto;
+            border: 1px solid black;
+            list-style: none;
+            text-align: center;
+            float: left;
+            padding: 2px;
+        }
+
+        #toolbar{
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 100%;
+            flex: 1;
+        }
+    </style>
+    <body>
+        <div>
+            <h1>Konva.js Object Grid Snapping Demo</h1>
+              
+            <div>
+                <div class="row">
+                    <ul id="toolbar">
+                        <li class="toolBarItem">
+                            <select id="backgroundSelection">
+                                <option value="lines">Lines</option>
+                                <option value="dottedLines">Dots</option>
+                                <option value="none">None</option>
+                              </select>
+                        </li>
+                        <li id="add" class="toolBarItem">Add Item</li>
+                    </ul>
+                </div>
+                <div id="container" class="row"></div>
+            </div>
+        </div>
+    </body>
+</html>
