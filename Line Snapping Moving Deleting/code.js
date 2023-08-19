@@ -11,7 +11,7 @@ function registerControls(){
   //Grid selection.
   document.getElementById("backgroundSelection").addEventListener("change", (event) => {
     //Clear current grid.
-    app.stage.find("#grid").destroy();
+    app.stage.find("#grid")[0].destroy();
     //Draw grid with lines.
     app.drawGrid(event.target.value);
     //Redraw stage.
@@ -374,7 +374,7 @@ class KonvaDemoApp{
     this.lineStartY = pos.y;
 
     //Get main item layer.
-    let layer = this.stage.find("#itemLayer");
+    let layer = this.stage.find("#itemLayer")[0];
     //Add current display group to the layer.
     layer.add(displayGroup);
     //Redraw layer.
@@ -387,7 +387,7 @@ class KonvaDemoApp{
   addNewLine(){
     //Get mouse position, adjusted for current scalling/zoom.
     let pos = this.getScaledPointerPosition(); //stage.getPointerPosition(); //non adjusted mouse position.
-    let layer = this.stage.find("#itemLayer");
+    let layer = this.stage.find("#itemLayer")[0];
 
     //Snap starting position coordinates to grid.
     let pos1 = { x: this.snapToGrid(this.lineStartX), y: this.snapToGrid(this.lineStartY) };
@@ -517,7 +517,7 @@ class KonvaDemoApp{
     currentLine.setPoints(points);
     
     //Get items layer.
-    let layer = app.stage.find("#itemLayer");
+    let layer = app.stage.find("#itemLayer")[0];
     //Redraw layer.
     layer.batchDraw();
   }
