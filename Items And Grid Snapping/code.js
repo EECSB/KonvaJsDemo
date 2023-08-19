@@ -169,7 +169,7 @@ class KonvaDemoApp{
     item.add(snapLocationRectangle);
 
     //Add snapLocationRectangle to a new layer.
-    this.stage.find("#itemLayer").add(item);
+    this.stage.find("#itemLayer")[0].add(item);
   }
 
   newSnapLocationRectangle(x, y, width, height){
@@ -212,7 +212,7 @@ class KonvaDemoApp{
     
     //When the object dragging starts show snap location, then move the object on top.
     rectangle.on("dragstart", (event) => {
-      event.currentTarget.parent.find(".snapLocationRectangle").show();
+      event.currentTarget.parent.find(".snapLocationRectangle").forEach((shape) => shape.show());
       event.currentTarget.moveToTop();
 
       this.stage.batchDraw();
@@ -227,15 +227,15 @@ class KonvaDemoApp{
       });
 
       this.stage.batchDraw();
-      event.currentTarget.parent.find(".snapLocationRectangle").hide();
+      event.currentTarget.parent.find(".snapLocationRectangle").forEach((shape) => shape.hide());
     });
     
     //On move snap location indication rectangle.
     rectangle.on("dragmove", (event) => {
-      event.currentTarget.parent.find(".snapLocationRectangle").position({
+      event.currentTarget.parent.find(".snapLocationRectangle").forEach((shape) => shape.position({
         x: Math.round(rectangle.x() / this.settings.blockSnapSize) * this.settings.blockSnapSize,
         y: Math.round(rectangle.y() / this.settings.blockSnapSize) * this.settings.blockSnapSize
-      });
+      }));
 
       this.stage.batchDraw();
     });
@@ -259,7 +259,7 @@ class KonvaDemoApp{
     //Grid selection.
     document.getElementById("backgroundSelection").addEventListener("change", (event) => {
       //Clear current grid.
-      this.stage.find("#grid").destroy();
+      this.stage.find("#grid")[0].destroy();
       //Draw grid with lines.
       this.drawGrid(event.target.value);
       //Redraw stage.
